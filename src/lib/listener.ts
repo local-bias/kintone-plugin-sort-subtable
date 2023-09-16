@@ -8,6 +8,7 @@ export const listener = new KintoneEventListener({
     console.error('エラー', error);
   },
   logDisabled: process.env.NODE_ENV === 'production',
+  logPrefix: `[${PLUGIN_NAME}] `,
 });
 
 process.env.NODE_ENV === 'development' &&

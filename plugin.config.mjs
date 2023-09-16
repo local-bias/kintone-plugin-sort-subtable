@@ -1,6 +1,6 @@
 const hp = 'https://konomi.app/';
 const commonCdn = 'https://kintone-plugin.konomi.app/common';
-const localhost = 'https://127.0.0.1:9999';
+const localhost = 'https://127.0.0.1:11335';
 
 /** @type {import('./src/types/plugin-config').PluginConfig} */
 export default {
@@ -10,14 +10,14 @@ export default {
       version: '1.0.0',
       type: 'APP',
       name: {
-        en: 'kintone-plugin-template',
-        ja: 'プラグインテンプレート',
-        zh: '插件模板',
+        en: 'Sort Subtable Plugin',
+        ja: 'サブテーブル並び替えプラグイン',
+        zh: '子表排序插件',
       },
       description: {
-        en: 'kintone-plugin-template',
-        ja: 'プラグインの説明をここに記載します',
-        zh: '插件模板',
+        en: 'Add a button to sort the rows of the subtable based on a specific column.',
+        ja: 'サブテーブルの行を特定の列を基準にソートできるボタンを追加します。',
+        zh: '在子表中添加一个按钮，根据特定列对行进行排序。',
       },
       icon: 'icon.png',
       homepage_url: { ja: hp, en: hp },
