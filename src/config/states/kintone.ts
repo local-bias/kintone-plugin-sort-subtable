@@ -21,3 +21,11 @@ export const appFieldsState = selector<kintoneAPI.FieldProperty[]>({
     return values.sort((a, b) => a.label.localeCompare(b.label, 'ja'));
   },
 });
+
+export const subtableFieldsState = selector<kintoneAPI.property.Subtable[]>({
+  key: `${PREFIX}subtableFieldsState`,
+  get: ({ get }) => {
+    const fields = get(appFieldsState);
+    return fields.filter((field) => field.type === 'SUBTABLE') as kintoneAPI.property.Subtable[];
+  },
+});

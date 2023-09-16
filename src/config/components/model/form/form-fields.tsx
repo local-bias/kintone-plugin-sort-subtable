@@ -5,17 +5,17 @@ import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { produce } from 'immer';
 
-import { appFieldsState } from '../../../states/kintone';
-import { fieldsState } from '../../../states/plugin';
+import { subtableFieldsState } from '../../../states/kintone';
+import { ignoreFieldsState } from '../../../states/plugin';
 
 const Component: FC = () => {
-  const selectedFields = useRecoilValue(fieldsState);
-  const fields = useRecoilValue(appFieldsState);
+  const selectedFields = useRecoilValue(ignoreFieldsState);
+  const fields = useRecoilValue(subtableFieldsState);
 
   const onFieldChange = useRecoilCallback(
     ({ set }) =>
       (rowIndex: number, value: string) => {
-        set(fieldsState, (current) =>
+        set(ignoreFieldsState, (current) =>
           produce(current, (draft) => {
             draft[rowIndex] = value;
           })
@@ -27,7 +27,7 @@ const Component: FC = () => {
   const addField = useRecoilCallback(
     ({ set }) =>
       (rowIndex: number) => {
-        set(fieldsState, (current) =>
+        set(ignoreFieldsState, (current) =>
           produce(current, (draft) => {
             draft.splice(rowIndex + 1, 0, '');
           })
@@ -39,7 +39,7 @@ const Component: FC = () => {
   const removeField = useRecoilCallback(
     ({ set }) =>
       (rowIndex: number) => {
-        set(fieldsState, (current) =>
+        set(ignoreFieldsState, (current) =>
           produce(current, (draft) => {
             draft.splice(rowIndex, 1);
           })
