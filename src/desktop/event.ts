@@ -114,5 +114,12 @@ const sortSubtable = (params: {
     return params.sort === 'asc' ? sortField(aField, bField) : sortField(bField, aField);
   });
 
+  subtable.value.forEach((row) => {
+    Object.keys(row.value).forEach((fieldCode) => {
+      //@ts-ignore
+      row.value[fieldCode].lookup = true;
+    });
+  });
+
   setCurrentRecord({ record });
 };
