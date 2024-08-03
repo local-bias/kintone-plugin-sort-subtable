@@ -22,12 +22,20 @@ listener.add(['app.record.create.show', 'app.record.edit.show'], async (event) =
   }
 
   for (const subtable of metaSubtable) {
+    if (!subtable) {
+      console.warn('subtable is not found');
+      continue;
+    }
     const { var: fieldCode, fieldList } = subtable;
     if (ignoreFields.includes(fieldCode)) {
       continue;
     }
 
     Object.values(fieldList).forEach((field) => {
+      if (!field) {
+        console.warn('field is not found');
+        return;
+      }
       const { var: subtableFieldCode } = field;
       const element = document.querySelector<HTMLTableCellElement>(`.label-${field.id}`);
       if (!element) {
